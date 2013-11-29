@@ -16,7 +16,7 @@ Foo::Application.routes.draw do
 		end
 	end
 
-post "session/create"
+post "users/login"
 post "users/create"
 
 

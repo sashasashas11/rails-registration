@@ -6,22 +6,29 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		session_id = User.generate_session_id
-		user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: User.encrypt_password(params[:password]), session_id: session_id)
+		user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: User.encrypt_password(params[:password]))
 		unless user.save
 			flash[:errors] = user.errors.full_messages
 			render action: 'new' and return
 		end
 
 		if user
-			#session.clear
-			#session = {}
-			#reset_session
-			#session.delete(:session_id)
-			session[:session_id]=session_id
-			redirect_to '/users/profile'
+			redirect_to '/users/sign_in'
 		end
 
+	end
+
+	def login
+		user = User.find_by_email_and_password params[:email], User.encrypt_password(params[:password])
+
+		unless user
+			render action: 'sign_in' and return
+		end
+
+		if user
+			session[:id] = user.id
+			redirect_to '/users/profile'
+		end
 	end
 
 	def sign_in
