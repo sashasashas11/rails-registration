@@ -1,18 +1,9 @@
 Foo::Application.routes.draw do
 
-
-
 	resources :users do
 		collection do
 			get "sign_in"
 			get "profile"
-		end
-	end
-
-
-	resources :tests do
-		collection do
-			get 'test'
 		end
 	end
 

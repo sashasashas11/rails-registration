@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	layout "user_layout"
 
 	before_filter :is_authenticated, :only => [:profile]
 
@@ -12,10 +13,7 @@ class UsersController < ApplicationController
 			render action: 'new' and return
 		end
 
-		if user
-			redirect_to '/users/sign_in'
-		end
-
+			redirect_to '/users/sign_in'   if user
 	end
 
 	def login
