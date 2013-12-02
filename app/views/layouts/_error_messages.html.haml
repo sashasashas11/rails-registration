@@ -1,0 +1,6 @@
+- unless flash[:errors].nil?
+  .alert-danger
+    - flash[:errors].each do |error_message|
+      .error
+        = error_message
+        %br/

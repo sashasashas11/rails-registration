@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title= @page_title or "Page Title"
+    = stylesheet_link_tag    "/bootstrap/bootstrap", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "/bootstrap/bootstrap.min", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    :css
+      #{yield :stylesheets}
+  %body
+    = render partial: 'layouts/header'
+    .container
+      .row.col-md-4.col-md-offset-3
+        = render partial: 'layouts/error_messages'
+        = yield
+    / /container
+    = javascript_include_tag "/bootstrap/bootstrap", "data-turbolinks-track" => true
+    = javascript_include_tag "/bootstrap/bootstrap.min", "data-turbolinks-track" => true

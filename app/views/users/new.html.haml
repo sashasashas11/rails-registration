@@ -1,0 +1,17 @@
+- @page_title = "Registration"
+%h2.form-signin-heading Registration
+= form_tag "/users/create", :class => "form-signin", method: :post do
+  .form-group
+    = label_tag 'first_name', nil, class: 'small_label'
+    = text_field_tag :first_name, nil, size: 30, :class => "form-control", placeholder: "First name"
+  .form-group
+    = label_tag 'last_name', nil, class: 'small_label'
+    = text_field_tag :last_name, nil, size: 30, :class => "form-control", placeholder: "Last name"
+  .form-group
+    = label_tag 'email', nil, class: 'small_label'
+    = text_field_tag :email, nil, size: 30, :class => "form-control", placeholder: "Email"
+  .form-group
+    = label_tag 'password', nil, class: 'small_label'
+    = password_field_tag :password, nil, size: 30, :class => "form-control", placeholder: "Password"
+  = submit_tag :Registration, :class => "btn btn-success"
+

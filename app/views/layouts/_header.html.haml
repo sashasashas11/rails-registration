@@ -1,0 +1,14 @@
+%header.navbar.navbar-inverse{role: "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      / <a class="navbar-brand" href="#">Project name</a>
+    %nav.collapse.navbar-collapse
+      %ul.nav.navbar-nav.pull-right
+        %li= link_to "Home",    '#'
+        %li= link_to "Registration", new_user_path
+        %li= link_to "Sign in", sign_in_users_path
