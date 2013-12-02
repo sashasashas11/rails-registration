@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def is_authenticated
-	  1/0 unless current_user
+	 render text: "User is not registration" and return   unless current_user
   end
 
 

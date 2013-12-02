@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
 	def self.encrypt_password string
 		Digest::SHA1.hexdigest string
 	end
-
 end
 
