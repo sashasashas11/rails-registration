@@ -1,0 +1,45 @@
+/
+  -#- @page_title = "Registration"
+  -#%h2.form-signin-heading Registration
+  -#= form_for (@user) do |user_form|
+  -#  .form-group
+  -#    = user_form.label :first_name, "first_name"
+
+    -# user_form.fields_for @address do |address_form|
+      %p
+        = address_form.label :telephone_field, "telephone"
+        = address_form.text_field :telephone_field
+    -#- @user.addresses.each do
+    -#  - user_form.fields_for :addresses do |builder|
+    -#    builder.label :content, "Address"
+
+
+= form_for @user  do |f|
+  = f.fields_for :address do |a|
+    = a.label_for :telephone
+    = a.text_field :telephone
+
+  = f.submit 'OK'
+
+/
+  -# user_form.fields_for @address do |address_form|
+
+
+  =# form_tag "/users/create", :class => "form-signin", method: :post, :validate => true do
+    .form-group
+      = label_tag 'first_name', nil, class: 'small_label'
+      = text_field_tag :first_name, nil, size: 30, :class => "form-control", placeholder: "First name"
+    .form-group
+      = label_tag 'last_name', nil, class: 'small_label'
+      = text_field_tag :last_name, nil, size: 30, :class => "form-control", placeholder: "Last name"
+    .form-group
+      = label_tag 'email', nil, class: 'small_label'
+      = text_field_tag :email, nil, size: 30, :class => "form-control", placeholder: "Email"
+    .form-group
+      = label_tag 'password', nil, class: 'small_label'
+      = password_field_tag :password, nil, size: 30, :class => "form-control", placeholder: "Password"
+
+      -#= fields_for :addresses, @user.addresses do |address_fields|
+      -#  = address_fields.text_field :city
+      = submit_tag :Registration, :class => "btn btn-success"
+

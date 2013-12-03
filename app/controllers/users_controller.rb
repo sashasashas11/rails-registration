@@ -2,14 +2,29 @@ class UsersController < ApplicationController
 	before_filter :is_authenticated, :only => [:profile]
 
 	def new
+		@user = User.new
 	end
 
 	def create
-		user = User.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: User.encrypt_password(params[:password]))
+		#@user = User.new(params[:user])
+		@user = User.new(first_name: params[:user][:first_name],
+		                 last_name: params[:user][:last_name],
+		                 email: params[:user][:email],
+		                 password: User.encrypt_password(params[:user][:password])
+										)
 
-		redirect_to '/users/sign_in' and return if user.save
+		@address = Address.new(index: params[:user][:address][:index],
+														telephone: params[:user][:address][:telephone],
+		                       city: params[:user][:address][:city]
+		)
 
-		flash[:errors] = user.errors.full_messages
+		if @user.save
+			@address.user = @user
+			@address.save
+			redirect_to '/users/sign_in' and return
+		end
+
+		flash[:errors] = @user.errors.full_messages
 		render action: 'new'
 	end
 

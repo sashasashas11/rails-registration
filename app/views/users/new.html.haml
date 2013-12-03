@@ -1,17 +1,24 @@
-- @page_title = "Registration"
-%h2.form-signin-heading Registration
-= form_tag "/users/create", :class => "form-signin", method: :post do
+=form_for @user, url: "/users/create", method: :post, html: { class: "form-signin" } do |f|
   .form-group
-    = label_tag 'first_name', nil, class: 'small_label'
-    = text_field_tag :first_name, nil, size: 30, :class => "form-control", placeholder: "First name"
+  = label_tag 'first_name', nil, class: 'small_label'
+  = f.text_field :first_name,  class: "form-control"
   .form-group
-    = label_tag 'last_name', nil, class: 'small_label'
-    = text_field_tag :last_name, nil, size: 30, :class => "form-control", placeholder: "Last name"
+  = label_tag 'last_name', nil, class: 'small_label'
+  = f.text_field :last_name,  class: "form-control"
   .form-group
-    = label_tag 'email', nil, class: 'small_label'
-    = text_field_tag :email, nil, size: 30, :class => "form-control", placeholder: "Email"
+  = label_tag 'email', nil, class: 'small_label'
+  = f.text_field :email,  class: "form-control"
   .form-group
-    = label_tag 'password', nil, class: 'small_label'
-    = password_field_tag :password, nil, size: 30, :class => "form-control", placeholder: "Password"
+  = label_tag 'password', nil, class: 'small_label'
+  = f.password_field :password,  class: "form-control"
+  %h3 Address:
+  .form-group
+  = f.fields_for :address do |a|
+    = label_tag 'telephone', nil, class: 'small_label'
+    = a.text_field :telephone,  class: "form-control"
+    = label_tag 'city', nil, class: 'small_label'
+    = a.text_field :city,  class: "form-control"
+    = label_tag 'zip code', nil, class: 'small_label'
+    = a.text_field :index,  class: "form-control"
+  .form-group
   = submit_tag :Registration, :class => "btn btn-success"
-
