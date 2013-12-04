@@ -1,11 +1,13 @@
 ;(function($){
-    var input = $("#user_email"),
+    var email_input = $("#user_email"),
         div = $("#email-validate"),
         massage_error = $("#email_massage_error"),
         date = {},
-        massage = $("#email-validate span");
+        massage = $("#email-validate span"),
+        all_input = $("#new_user input");
 
-    input.on('change', function(e){
+
+    email_input.on('change', function(e){
         date.email = $(e.target).val();
         if (/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test(date.email)) {
             $.ajax({
@@ -35,4 +37,13 @@
             massage_error.text('email is not valid');
         }
     })
+        if ($(location).attr('pathname') == "/users/create") {
+            $.each( all_input, function( key, value ) {
+                if ($(this).val() == "") {
+//                    console.log($(this).parent());
+                    parent = $(this).parent();
+                    parent.addClass('has-error');
+                }
+            });
+        }
 })(jQuery)
