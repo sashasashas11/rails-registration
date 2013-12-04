@@ -1,7 +1,7 @@
 ;(function($){
     var input = $("#user_email"),
-        massage_error = "<div class='text-danger'>Email is not valid</div>",
-        div = $("#email-validate")
+        div = $("#email-validate"),
+        massage_error = $("#email_massage_error"),
         date = {},
         massage = $("#email-validate span");
 
@@ -15,11 +15,13 @@
                 success: function(result){
                     console.log(result);
                     if (result == 'true') {
+                        massage_error.text('This email is already registered');
                         div.addClass('has-error');
                         massage.removeClass('email-success');
                         massage.addClass('email-error');
                     }
                     else {
+                        massage_error.text(' ');
                         div.removeClass('has-error');
                         massage.addClass('email-success');
                     }
@@ -30,7 +32,7 @@
             div.addClass('has-error');
             massage.removeClass('email-success');
             massage.addClass('email-error');
-            div.prepend(massage_error);
+            massage_error.text('email is not valid');
         }
     })
 })(jQuery)
