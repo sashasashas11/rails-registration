@@ -5,9 +5,10 @@
   .form-group
   = label_tag 'last_name', nil, class: 'small_label'
   = f.text_field :last_name,  class: "form-control"
-  .form-group
-  = label_tag 'email', nil, class: 'small_label'
-  = f.text_field :email,  class: "form-control"
+  .form-group#email-validate
+    = label_tag 'email', nil, class: 'small_label'
+    = f.text_field :email,  class: "form-control"
+    %span
   .form-group
   = label_tag 'password', nil, class: 'small_label'
   = f.password_field :password,  class: "form-control"

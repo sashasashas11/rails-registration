@@ -9,6 +9,7 @@ Foo::Application.routes.draw do
 
 post "users/login"
 post "users/create"
+post "users/error"
 
 
 
