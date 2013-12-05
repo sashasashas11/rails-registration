@@ -45,7 +45,9 @@ class UsersController < ApplicationController
 
 	def error
 		user = User.find_by_email params[:email]
+
 		render text: 'true' and return  if user
+
 		render text: 'false'
 	end
 

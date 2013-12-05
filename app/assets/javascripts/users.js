@@ -15,7 +15,6 @@
                 type: "POST",
                 data: date,
                 success: function(result){
-                    console.log(result);
                     if (result == 'true') {
                         massage_error.text('This email is already registered');
                         div.addClass('has-error');
@@ -34,13 +33,12 @@
             div.addClass('has-error');
             massage.removeClass('email-success');
             massage.addClass('email-error');
-            massage_error.text('email is not valid');
+            massage_error.text('Email is not valid');
         }
     })
         if ($(location).attr('pathname') == "/users/create") {
             $.each( all_input, function( key, value ) {
                 if ($(this).val() == "") {
-//                    console.log($(this).parent());
                     parent = $(this).parent();
                     parent.addClass('has-error');
                 }
