@@ -1,6 +1,7 @@
 Foo::Application.routes.draw do
 	root to: "users#profile"
   devise_for :users
+  #devise_for :users, :controllers => { :users => "users" }
 
 	resources :users do
 		collection do

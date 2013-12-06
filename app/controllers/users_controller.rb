@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	#before_filter :is_authenticated, :only => [:profile]
+	before_filter :authenticate_user!, :only => [:profile]
 
 	def new
 		@user = User.new
@@ -12,8 +12,8 @@ class UsersController < ApplicationController
 			password: User.encrypt_password(params[:user][:password]))
 
 		@address = Address.new(index: params[:user][:address][:index],
-														telephone: params[:user][:address][:telephone],
-		                       city: params[:user][:address][:city]
+			telephone: params[:user][:address][:telephone],
+		  city: params[:user][:address][:city]
 		)
 
 		if @user.save
