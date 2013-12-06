@@ -1,4 +1,6 @@
 Foo::Application.routes.draw do
+	root to: "users#profile"
+  devise_for :users
 
 	resources :users do
 		collection do
@@ -11,7 +13,8 @@ post "users/login"
 post "users/create"
 post "users/error"
 
-
+	#get "users/login"
+	#get "users/sign_in"
 
 
   #get "users/new"

@@ -3,12 +3,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def is_authenticated
-	 render text: "User is not registration" and return   unless current_user
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+	  devise_parameter_sanitizer.for(:sign_up) << :username
   end
 
 
-	def current_user
-		@current_user ||= User.find session[:id]
-	end
+	#def is_authenticated
+	# render text: "User is not registration" and return   unless current_user
+	#end
+	#
+	#
+	#def current_user
+	#	@current_user ||= User.find session[:id]
+	#end
 end
