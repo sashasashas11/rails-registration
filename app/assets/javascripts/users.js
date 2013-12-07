@@ -36,7 +36,7 @@
             massage_error.text('Email is not valid');
         }
     })
-        if ($(location).attr('pathname') == "/users/create") {
+        if ($(location).attr('pathname') == "/users") {
             $.each( all_input, function( key, value ) {
                 if ($(this).val() == "") {
                     parent = $(this).parent();
