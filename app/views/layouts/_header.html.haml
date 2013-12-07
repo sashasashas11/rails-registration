@@ -8,13 +8,14 @@
         %span.icon-bar
     %nav.collapse.navbar-collapse
       %ul.nav.navbar-nav.pull-right
+        - if user_signed_in?
+          .text-success
+            %li= "Signed in as #{current_user.email}"
         %li= link_to "Home",    '#'
         -#%li= link_to "Registration", new_user_path
         -#%li= link_to "Sign in", sign_in_users_path
         -#%li= link_to "Sign out", destroy_user_session_path
         - if user_signed_in?
-          .text-success.text-center
-            Signed in as #{current_user.email}.
           %li= link_to "Sign out", destroy_user_session_path, :method => :delete
         - else
           %li= link_to "Sign up", new_user_registration_path

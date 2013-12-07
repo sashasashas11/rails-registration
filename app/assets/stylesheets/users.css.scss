@@ -9,7 +9,6 @@
   margin-right: -30px;
   height: 31px;
   width: 30px;
-
 }
 
 .email-success{
@@ -20,4 +19,16 @@
   margin-right: -30px;
   height: 31px;
   width: 30px;
+}
+
+.table-user-information > tbody > tr {
+  border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+  border-top: 0;
+}
+
+.table-user-information > tbody > tr > td {
+  border-top: 0;
 }

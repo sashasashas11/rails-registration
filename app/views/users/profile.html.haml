@@ -1,3 +1,16 @@
 - @page_title = "Profile"
 %h2 User profile
-= session[:session_id]
+%table.table.table-user-information
+  %tbody
+    %tr
+      %td First name:
+      %td
+        = current_user.first_name
+    %tr
+      %td Last name:
+      %td
+        = current_user.last_name
+    %tr
+      %td Email
+      %td
+        = current_user.email
