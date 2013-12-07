@@ -1,6 +1,6 @@
 - @page_title = "login"
 %h2.form-signin-heading Please sign in
-= form_tag '/users/login', :class => "form-signin row login-form", method: :post do
+= form_tag resource, :as => resource_name, :url => session_path(resource_name) , :class => "form-signin row login-form", method: :post do
   .form-group
     = label_tag 'email', nil, class: 'small_label'
     = text_field_tag :email, nil, size: 30, :class => "form-control", placeholder: "Email"

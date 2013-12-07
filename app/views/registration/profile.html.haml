@@ -1,0 +1,28 @@
+- @page_title = "Profile"
+%h2 User profile
+%table.table.table-user-information
+  %tbody
+    %tr
+      %td First name:
+      %td
+        = current_user.first_name
+    %tr
+      %td Last name:
+      %td
+        = current_user.last_name
+    %tr
+      %td Email
+      %td
+        = current_user.email
+    %tr
+      %td Zip code
+      %td
+        = @address.index
+    %tr
+      %td City
+      %td
+        = @address.city
+    %tr
+      %td Telephone
+      %td
+        = @address.telephone

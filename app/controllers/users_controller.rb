@@ -1,3 +1,4 @@
+#class UsersController < ApplicationController #Devise::RegistrationsController
 class UsersController < Devise::RegistrationsController
 	before_filter :authenticate_user!, :only => [:profile]
 
@@ -45,10 +46,12 @@ class UsersController < Devise::RegistrationsController
 	#end
 	#
 	def profile
+		p 1
 		#user = User.find(current_user)
 	end
 
 	def error
+
 		user = User.find_by_email params[:email]
 
 		render text: 'true' and return  if user

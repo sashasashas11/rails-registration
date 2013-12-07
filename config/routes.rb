@@ -1,18 +1,20 @@
 Foo::Application.routes.draw do
-	root to: "users#profile"
+	root to: "registration#profile"
+	get "registration/profile"
   #devise_for :users
   devise_for :users, :controllers => { registrations: "users" }
 
-	resources :users do
-		collection do
-			get "sign_in"
-			get "profile"
-		end
-	end
 
-post "users/login"
-post "users/create"
-post "users/error"
+#	resources :users do
+#		collection do
+#			get "sign_in"
+#			get "profile"
+#		end
+#	end
+#
+#post "users/login"
+#post "users/create"
+post "registration/error"
 
 	#get "users/login"
 	#get "users/sign_in"
