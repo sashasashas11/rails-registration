@@ -11,7 +11,7 @@
         date.email = $(e.target).val();
         if (/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i.test(date.email)) {
             $.ajax({
-                url: "/users/error",
+                url: "/registration/error",
                 type: "POST",
                 data: date,
                 success: function(result){

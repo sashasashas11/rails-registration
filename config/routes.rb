@@ -1,6 +1,7 @@
 Foo::Application.routes.draw do
 	root to: "registration#profile"
 	get "registration/profile"
+	post "registration/error"
   #devise_for :users
   devise_for :users, :controllers => { registrations: "users" }
 
@@ -14,7 +15,7 @@ Foo::Application.routes.draw do
 #
 #post "users/login"
 #post "users/create"
-post "registration/error"
+
 
 	#get "users/login"
 	#get "users/sign_in"
