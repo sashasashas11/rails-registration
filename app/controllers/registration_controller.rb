@@ -1,13 +1,6 @@
 class RegistrationController <ApplicationController
 	before_filter :authenticate_user!, :only => [:profile]
 
-
-
-	def new
-		@user = User.new
-		@user.build_address
-	end
-
 	def profile
 		@address = Address.find_by_user_id current_user
 	end

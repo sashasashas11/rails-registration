@@ -36,6 +36,8 @@ gem "haml-rails", "~> 0.5.1"
 
 gem 'devise'
 gem 'omniauth'
+
+gem "paperclip", "~> 3.0"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

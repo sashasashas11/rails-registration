@@ -2,7 +2,6 @@ Foo::Application.routes.draw do
 	root to: "registration#profile"
 	get "registration/profile"
 	post "registration/error"
-  #devise_for :users
   devise_for :users, :controllers => { registrations: "users" }
 
 
