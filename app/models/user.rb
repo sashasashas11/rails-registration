@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-        #:confirmable
 
 	validates_presence_of :first_name, :last_name, :email, :password
 	validates_uniqueness_of :email
@@ -12,3 +11,9 @@ class User < ActiveRecord::Base
 	accepts_nested_attributes_for :address, :allow_destroy => true
 
 end
+
+
+
+
+
+
