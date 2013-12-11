@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 	has_one :address, :inverse_of => :user, :autosave => true
 	accepts_nested_attributes_for :address, :allow_destroy => true
 
+  has_attached_file :avatar #, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 end
 
 
