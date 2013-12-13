@@ -1,8 +1,10 @@
 -if notice
-  %p.alert.alert-info#notice= notice
+  .alert.alert-info.alert-dismissable
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+    %p#notice= notice
 
-%h2 Show transaction
 .col-md-8
+  %h2 Show transaction
   %table.table.table-bordered
     %tbody
       %tr

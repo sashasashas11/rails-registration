@@ -19,9 +19,10 @@
         =transaction[:amount]
         $
       %td
-        = link_to ' ', transaction,  class: "glyphicon glyphicon-eye-open"
-        = link_to ' ', edit_transaction_path(transaction), class: "glyphicon glyphicon-pencil"
-        = link_to ' ',  transaction, class: "glyphicon glyphicon-trash", :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = link_to ' ', transaction,  class: "glyphicon glyphicon-eye-open", title: "show"
+        = link_to ' ', edit_transaction_path(transaction), class: "glyphicon glyphicon-pencil", title: "edit"
+        = link_to ' ',  transaction, class: "glyphicon glyphicon-trash", title: "delete", :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = link_to ' ', "#", class: "glyphicon glyphicon-comment", title: "commentary"
 %br
 
 
