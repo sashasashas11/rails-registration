@@ -1,0 +1,24 @@
+-if notice
+  %p.alert.alert-info#notice= notice
+
+%h2 Show transaction
+.col-md-8
+  %table.table.table-bordered
+    %tbody
+      %tr
+        %td Vendor:
+        %td
+          = @transaction['vendor']
+      %tr
+        %td Customer:
+        %td
+          = @transaction['customer']
+      %tr
+        %td Amount
+        %td
+          = @transaction['amount']
+
+  = link_to ' Edit', edit_transaction_path(@transaction), class: "btn btn-warning glyphicon glyphicon-pencil pull-right"
+
+  = link_to ' Back', transactions_path, class: "btn btn-info glyphicon glyphicon-arrow-left"
+

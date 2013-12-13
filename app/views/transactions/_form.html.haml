@@ -1,0 +1,19 @@
+= form_for @transaction do |f|
+  - if @transaction.errors.any?
+    .alert.alert-danger
+      #error_explanation
+        %h2= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
+        %ul
+          - @transaction.errors.full_messages.each do |msg|
+            %li= msg
+  .form-group
+    = label_tag 'vendor', nil, class: 'small_label'
+    = f.text_field :vendor,  class: "form-control"
+  .form-group
+    = label_tag 'customer', nil, class: 'small_label'
+    = f.text_field :customer,  class: "form-control"
+  .form-group
+    = label_tag 'amount', nil, class: 'small_label'
+    = f.text_field :amount,  class: "form-control"
+  .actions
+    = f.submit 'Save', class: "btn btn-success"

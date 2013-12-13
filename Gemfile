@@ -38,6 +38,7 @@ gem 'devise'
 gem 'omniauth'
 
 gem "paperclip", "~> 3.0"
+#gem 'protected_attributes'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

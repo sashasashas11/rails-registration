@@ -4,7 +4,7 @@ Foo::Application.routes.draw do
 	post "registration/error"
   devise_for :users, :controllers => { registrations: "users" }
 
-
+	resources :transactions
 #	resources :users do
 #		collection do
 #			get "sign_in"
