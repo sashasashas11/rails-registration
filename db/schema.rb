@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211152621) do
+ActiveRecord::Schema.define(version: 20131213134754) do
 
   create_table "addresses", force: true do |t|
     t.integer  "index"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20131211152621) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "commentaries", force: true do |t|
+    t.text     "massage"
+    t.integer  "user_id"
+    t.integer  "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "issues", force: true do |t|
@@ -33,7 +41,7 @@ ActiveRecord::Schema.define(version: 20131211152621) do
   create_table "transactions", force: true do |t|
     t.string   "vendor"
     t.string   "customer"
-    t.float  "amount",     precision: 10, scale: 0
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

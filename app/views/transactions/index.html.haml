@@ -1,6 +1,7 @@
 %a{href: new_transaction_path}
   %button.btn.btn-primary.btn-lg.pull-right{"data-target" => "#myModal", "data-toggle" => "modal"}
     New transaction
+= link_to 'Export', "transactions.csv", class: "btn btn-info glyphicon glyphicon-file",  title: "Export"
 %h1 Listing transactions
 %table.table.table-bordered.table-hover
   %thead
@@ -22,7 +23,7 @@
         = link_to ' ', transaction,  class: "glyphicon glyphicon-eye-open", title: "show"
         = link_to ' ', edit_transaction_path(transaction), class: "glyphicon glyphicon-pencil", title: "edit"
         = link_to ' ',  transaction, class: "glyphicon glyphicon-trash", title: "delete", :method => :delete, :data => { :confirm => 'Are you sure?' }
-        = link_to ' ', "#", class: "glyphicon glyphicon-comment", title: "commentary"
+        = link_to ' ', transaction_commentaries_path(transaction), class: "glyphicon glyphicon-comment", title: "commentary"
 %br
 
 

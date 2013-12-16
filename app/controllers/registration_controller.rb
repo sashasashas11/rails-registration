@@ -1,4 +1,4 @@
-class RegistrationController <ApplicationController
+	class RegistrationController <ApplicationController
 	before_filter :authenticate_user!, :only => [:profile]
 
 	def profile

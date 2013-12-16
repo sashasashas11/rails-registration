@@ -7,6 +7,10 @@ class TransactionsController < ApplicationController
   def index
     @transactions = Transaction.all
     @transaction = Transaction.new
+		respond_to do |format|
+			format.html
+			format.csv {send_data @transactions.to_csv}
+		end
   end
 
   # GET /transactions/1
@@ -52,6 +56,9 @@ class TransactionsController < ApplicationController
       end
     end
   end
+
+
+
 
   # DELETE /transactions/1
   # DELETE /transactions/1.json

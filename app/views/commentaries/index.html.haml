@@ -1,0 +1,40 @@
+%h1 Transaction
+
+%table.table.table-bordered.table-hover
+  %thead
+    %tr
+      %th Vendor
+      %th Customer
+      %th Amount
+
+    %tbody
+    %tr
+      %td= @transaction.vendor
+      %td= @transaction.customer
+      %td
+        = @transaction.amount
+        $
+= link_to 'All transactions', transactions_path, class: "btn btn-primary"
+-unless @commentaries[0] == nil
+  %h1 List commentaries
+
+  %table.table.table-bordered.table-hover
+    %thead
+    %tr
+      %th User
+      %th massage
+
+    - @commentaries.each do |commentary|
+      %tbody
+      %tr
+        %td
+          =commentary.user.first_name
+        %td
+          =commentary.massage
+          -if commentary.user == current_user
+            = link_to ' ', edit_transaction_commentary_path(@transaction, commentary), class: "glyphicon glyphicon-pencil", title: "edit"
+            = link_to ' ', transaction_commentary_path(@transaction, commentary), class: "glyphicon glyphicon-trash", :method => :delete, :data => { :confirm => 'Are you sure?' }
+%h2 Add comment
+= render 'form'
+
+-#= link_to 'New Commentary', new_commentary_path

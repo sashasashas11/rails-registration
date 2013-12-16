@@ -1,0 +1,12 @@
+= form_for ([@transaction, @commentary]) do |f|
+  - if @commentary.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@commentary.errors.count, "error")} prohibited this commentary from being saved:"
+      %ul
+        - @commentary.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = label_tag 'massage', nil, class: 'small_label'
+    = f.text_area  :massage,  class: "form-control"
+  .form-group
+    = f.submit 'Save', class: "btn btn-success"
