@@ -51,21 +51,6 @@ class CommentariesController < ApplicationController
     end
   end
 
-  def export
-	  header_columns = ['fname', 'lname', 'email']
-	  columns =  ['Ivan', 'Urgant', 'iu@gmail.com']
-
-	  file = CSV.generate do |csv|
-		  csv << header_columns
-		  columns.each do |c|
-			  row << c
-		  end
-	  end
-
-	  send_data file, filename: "export.csv"
-
-  end
-
   # DELETE transactions/1/commentaries/1
   # DELETE transactions/1/commentaries/1.json
   def destroy
