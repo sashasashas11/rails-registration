@@ -7,6 +7,7 @@ Foo::Application.routes.draw do
 	resources :transactions do
 		  resources :commentaries
 	end
+	resources :accounts
 get "commentaries/export"
 #	resources :users do
 #		collection do

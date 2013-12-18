@@ -1,0 +1,27 @@
+%h1 Listing accounts
+
+%table.table.table-bordered
+  %tr
+    %th ID
+    %th Name
+    %th Debit
+    %th Credit
+    %th Balance
+    %th Action
+
+  - @accounts.each do |account|
+    %tr
+      %td= account.id
+      %td= account.name
+      %td= account.debitSum
+      %td= account.creditSum
+      %td= account.balance.round 3
+      =account.firstCredit
+      %td
+        = link_to ' ', account,  class: "glyphicon glyphicon-eye-open", title: "show"
+        = link_to ' ', edit_account_path(account), class: "glyphicon glyphicon-pencil", title: "edit"
+        = link_to ' ',  account, class: "glyphicon glyphicon-trash", title: "delete", :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Account', new_account_path

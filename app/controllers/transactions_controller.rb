@@ -1,36 +1,30 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :get_transaction, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
-  # GET /transactions
-  # GET /transactions.json
   def index
     @transactions = Transaction.all
     @transaction = Transaction.new
-		respond_to do |format|
-			format.html
-			format.csv {send_data @transactions.to_csv}
-			format.xls { send_data @transactions.to_csv(col_sep: "\t") }
-		end
+    @debitAccounts = @creditAccounts = Account.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @transactions.to_csv}
+      format.xls { send_data @transactions.to_csv(col_sep: "\t") }
+    end
   end
 
-  # GET /transactions/1
-  # GET /transactions/1.json
   def show
-	  @transaction = set_transaction.attributes
   end
 
-  # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @debitAccounts = @creditAccounts = Account.all
   end
 
-  # GET /transactions/1/edit
   def edit
+    @debitAccounts = @creditAccounts = Account.all
   end
 
-  # POST /transactions
-  # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
     respond_to do |format|
@@ -44,8 +38,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /transactions/1
-  # PATCH/PUT /transactions/1.json
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
@@ -58,11 +50,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-
-
-
-  # DELETE /transactions/1
-  # DELETE /transactions/1.json
   def destroy
     @transaction.destroy
     respond_to do |format|
@@ -72,13 +59,12 @@ class TransactionsController < ApplicationController
   end
 
   private
-	  def transaction_params
-		  params.require(:transaction ).permit([:vendor, :customer, :amount])
-	  end
-
-  #  # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
+    def transaction_params
+      params.require(:transaction ).permit([:debit, :credit, :amount])
     end
 
+    ## Use callbacks to share common setup or constraints between actions.
+    def get_transaction
+      @transaction = Transaction.find(params[:id])
+    end
 end

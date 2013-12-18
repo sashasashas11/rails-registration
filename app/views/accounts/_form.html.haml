@@ -1,0 +1,12 @@
+= form_for @account do |f|
+  - if @account.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
+      %ul
+        - @account.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = label_tag 'name', nil, class: 'small_label'
+    = f.text_field  :name,  class: "form-control", :autofocus => true
+  .actions
+    = f.submit 'Save', class: "btn btn-success"

@@ -6,18 +6,18 @@
 %table.table.table-bordered.table-hover
   %thead
     %tr
-      %th Vendor
-      %th Customer
+      %th Debit
+      %th Credit
       %th Amount
       %th Action
 
   - @transactions.each do |transaction|
     %tbody
     %tr
-      %td=transaction[:vendor]
-      %td=transaction[:customer]
+      %td=transaction.accountA.try(:name).try(:capitalize)
+      %td=transaction.accountB.try(:name).try(:capitalize)
       %td
-        =transaction[:amount]
+        =transaction.amount
         $
       %td
         = link_to ' ', transaction,  class: "glyphicon glyphicon-eye-open", title: "show"

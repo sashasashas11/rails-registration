@@ -3,14 +3,14 @@
 %table.table.table-bordered.table-hover
   %thead
     %tr
-      %th Vendor
-      %th Customer
+      %th Debit
+      %th Credit
       %th Amount
 
     %tbody
     %tr
-      %td= @transaction.vendor
-      %td= @transaction.customer
+      %td= @transaction.accountA.name
+      %td= @transaction.accountB.name
       %td
         = @transaction.amount
         $

@@ -7,13 +7,15 @@
           - @transaction.errors.full_messages.each do |msg|
             %li= msg
   .form-group
-    = label_tag 'vendor', nil, class: 'small_label'
-    = f.text_field :vendor,  class: "form-control"
+    = label_tag 'debit', nil, class: 'small_label'
+    %br
+    = select_tag 'transaction[debit]', options_from_collection_for_select(@debitAccounts, "id", "name", @transaction.accountA.try(:id)), class: 'form-control'
   .form-group
-    = label_tag 'customer', nil, class: 'small_label'
-    = f.text_field :customer,  class: "form-control"
+    = label_tag 'credit', nil, class: 'small_label'
+    %br
+    = select_tag "transaction[credit]", options_from_collection_for_select(@creditAccounts, "id", "name", @transaction.accountB.try(:id)), class: 'form-control'
   .form-group
     = label_tag 'amount', nil, class: 'small_label'
-    = f.text_field :amount,  class: "form-control"
+    = f.text_field :amount,  class: "form-control amount"
   .actions
     = f.submit 'Save', class: "btn btn-success"
