@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 gem "haml-rails", "~> 0.5.1"

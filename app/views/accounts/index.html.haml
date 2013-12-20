@@ -16,7 +16,6 @@
       %td= account.debitSum
       %td= account.creditSum
       %td= account.balance.round 3
-      =account.firstCredit
       %td
         = link_to ' ', account,  class: "glyphicon glyphicon-eye-open", title: "show"
         = link_to ' ', edit_account_path(account), class: "glyphicon glyphicon-pencil", title: "edit"
@@ -24,4 +23,4 @@
 
 %br
 
-= link_to 'New Account', new_account_path
+= link_to 'New Account', new_account_path, class: 'btn btn-primary pull-right'

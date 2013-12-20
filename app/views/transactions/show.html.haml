@@ -10,11 +10,11 @@
       %tr
         %td Debit:
         %td
-          = @transaction.accountA.name
+          = @transaction.debit_account.name
       %tr
         %td Credit:
         %td
-          = @transaction.accountB.name
+          = @transaction.credit_account.name
       %tr
         %td Amount
         %td

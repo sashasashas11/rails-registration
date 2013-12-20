@@ -6,14 +6,15 @@
         %ul
           - @transaction.errors.full_messages.each do |msg|
             %li= msg
+  %div#error_messenger
   .form-group
     = label_tag 'debit', nil, class: 'small_label'
     %br
-    = select_tag 'transaction[debit]', options_from_collection_for_select(@debitAccounts, "id", "name", @transaction.accountA.try(:id)), class: 'form-control'
+    = select_tag 'transaction[debit]', options_from_collection_for_select(@accounts, "id", "name", @transaction.debit_account.try(:id)), class: 'form-control'
   .form-group
     = label_tag 'credit', nil, class: 'small_label'
     %br
-    = select_tag "transaction[credit]", options_from_collection_for_select(@creditAccounts, "id", "name", @transaction.accountB.try(:id)), class: 'form-control'
+    = select_tag "transaction[credit]", options_from_collection_for_select(@accounts, "id", "name", @transaction.credit_account.try(:id)), class: 'form-control'
   .form-group
     = label_tag 'amount', nil, class: 'small_label'
     = f.text_field :amount,  class: "form-control amount"

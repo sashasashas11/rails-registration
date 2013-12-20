@@ -14,8 +14,8 @@
   - @transactions.each do |transaction|
     %tbody
     %tr
-      %td=transaction.accountA.try(:name).try(:capitalize)
-      %td=transaction.accountB.try(:name).try(:capitalize)
+      %td=transaction.debit_account.try(:name).try(:capitalize)
+      %td=transaction.credit_account.try(:name).try(:capitalize)
       %td
         =transaction.amount
         $

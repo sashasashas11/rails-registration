@@ -5,11 +5,10 @@ class TransactionsController < ApplicationController
   def index
     @transactions = Transaction.all
     @transaction = Transaction.new
-    @debitAccounts = @creditAccounts = Account.all
+    @accounts = Account.all
     respond_to do |format|
       format.html
       format.csv {send_data @transactions.to_csv}
-      format.xls { send_data @transactions.to_csv(col_sep: "\t") }
     end
   end
 
@@ -18,11 +17,11 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @debitAccounts = @creditAccounts = Account.all
+    @accounts = Account.all
   end
 
   def edit
-    @debitAccounts = @creditAccounts = Account.all
+    @accounts = Account.all
   end
 
   def create

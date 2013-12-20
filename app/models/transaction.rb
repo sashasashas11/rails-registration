@@ -1,9 +1,8 @@
 class Transaction < ActiveRecord::Base
 	validates_presence_of :debit, :credit, :amount
 	has_many :commentaries
-	#belongs_to :account
-	belongs_to :accountA, :class_name => "Account", :foreign_key => "debit"
-	belongs_to :accountB, :class_name => "Account", :foreign_key => "credit"
+	belongs_to :debit_account, :class_name => "Account", :foreign_key => "debit"
+	belongs_to :credit_account, :class_name => "Account", :foreign_key => "credit"
 
   scope :find_debit, ->(account_id) { where(:debit => account_id)}
   scope :find_credit, ->(account_id) { where(:credit => account_id)}

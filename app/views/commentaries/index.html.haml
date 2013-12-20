@@ -9,8 +9,8 @@
 
     %tbody
     %tr
-      %td= @transaction.accountA.name
-      %td= @transaction.accountB.name
+      %td= @transaction.debit_account.name
+      %td= @transaction.credit_account.name
       %td
         = @transaction.amount
         $
