@@ -11,18 +11,18 @@
       %th Amount
       %th Action
 
-  - @transactions.each do |transaction|
     %tbody
-    %tr
-      %td=transaction.debit_account.try(:name).try(:capitalize)
-      %td=transaction.credit_account.try(:name).try(:capitalize)
-      %td
+  - @transactions.each do |transaction|
+    %tr(data-id ="#{transaction.id}")
+      %td.debit=transaction.debit_account.try(:name).try(:capitalize)
+      %td.credit=transaction.credit_account.try(:name).try(:capitalize)
+      %td.amount
         =transaction.amount
         $
       %td
         = link_to ' ', transaction,  class: "glyphicon glyphicon-eye-open", title: "show"
         = link_to ' ', edit_transaction_path(transaction), class: "glyphicon glyphicon-pencil", title: "edit"
-        = link_to ' ',  transaction, class: "glyphicon glyphicon-trash", title: "delete", :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = link_to ' ',  transaction, class: "remove glyphicon glyphicon-trash", title: "delete", :method => :delete, :data => { :confirm => 'Are you sure?' }
         = link_to ' ', transaction_commentaries_path(transaction), class: "glyphicon glyphicon-comment", title: "commentary"
 %br
 

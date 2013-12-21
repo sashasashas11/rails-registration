@@ -26,10 +26,13 @@ class TransactionsController < ApplicationController
 
   def create
     @transaction = Transaction.new(transaction_params)
+
     respond_to do |format|
       if @transaction.save
+        id = Transaction.last.id
+        transaction_json = {id:id, debit:@transaction.debit_account.name, credit: @transaction.credit_account.name, amount:@transaction.amount}
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @transaction }
+        format.json { render json:  transaction_json, status: :created, location: @transaction }
       else
         format.html { render action: 'new' }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
@@ -51,9 +54,10 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy
+
     respond_to do |format|
       format.html { redirect_to transactions_url }
-      format.json { head :no_content }
+      format.json { render text: @transaction.id}
     end
   end
 

@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  validates_presence_of :name
+  #validates_presence_of :name
 	has_many :debitTransactions, class_name: 'Transaction', foreign_key: 'debit'
 	has_many :creditTransactions, class_name: 'Transaction', foreign_key: 'credit'
 
